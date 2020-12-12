@@ -43,7 +43,12 @@ export class SampleComponent extends Vue{}
         })
     },
 })
-export class SampleComponent extends Vue{}
+export class SampleComponent extends Vue{
+    // getterをscript内で使いたい場合は同じ名前の変数を定義する
+    gettername: any
+
+    // this.getternameでアクセス
+}
 ```
 
 # Data
