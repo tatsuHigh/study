@@ -203,16 +203,16 @@ process.env.環境変数名
 
 # Typescript 関数定義方法
 ```
+// アロー関数式 ※これだけ覚えておけばよい
+const func = (arg: string) => arg
+
 // 名前付き関数
-function func1 (arg: string) {
+function func (arg: string) {
     return arg
 }
 
 // 関数式
-const func2 = function(arg: string) {
+const func = function(arg: string) {
     return arg
 }
-
-// アロー関数式
-const func3 = (arg: string) => arg
 ```
