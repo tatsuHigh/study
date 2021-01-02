@@ -8,21 +8,21 @@ Next.js では以下の 2 フォルダだけ特別な意味を持つフォルダ
 
 ## pages
 
-\*\*/pages 配下に置かれたファイルは自動ルーティングされる
-ex) ドメインが`http://sample.com`の場合
-・pages/index.tsx
-→`http://sample.com`でアクセス可能
-・pages/abc.tsx
-→`http://sample.com/abc`でアクセス可能
-・pages/dir1/index.tsx
-→`http://sample.com/dir1`でアクセス可能
-・pages/dir1/abc.tsx
-→`http://sample.com/dir1/abc`でアクセス可能
+\*\*/pages 配下に置かれたファイルは自動ルーティングされる  
+ex) ドメインが`http://sample.com`の場合  
+・pages/index.tsx  
+→`http://sample.com`でアクセス可能  
+・pages/abc.tsx  
+→`http://sample.com/abc`でアクセス可能  
+・pages/dir1/index.tsx  
+→`http://sample.com/dir1`でアクセス可能  
+・pages/dir1/abc.tsx  
+→`http://sample.com/dir1/abc`でアクセス可能  
 ※index.tsx は特別扱いされる
 
 ## public
 
-public 配下に画像を置くと、以下のようにアクセスできるようになる
+public 配下に画像を置くと、以下のようにアクセスできるようになる  
 ex) favicon.ico を public/favicon.ico に設置した場合  
 `ドメイン.com/favicon.ico`でアクセス可能
 
