@@ -22,6 +22,9 @@ ex) ドメインが`http://sample.com`の場合
 ・pages/dir1/abc.tsx  
 →`http://sample.com/dir1/abc`でアクセス可能  
 ※index.tsx は特別扱いされる
+そのほか、ダイナミックルーティングと呼ばれるものもある(公式を参照)。
+
+公式：https://nextjs.org/docs/basic-features/pages
 
 ## public
 
@@ -106,12 +109,15 @@ useState
 useEffect
 ```
 
-などがあり、使用方法は以下が参考になる。  
-https://qiita.com/seira/items/f063e262b1d57d7e78b4
+などがある。
+
+参考：https://qiita.com/seira/items/f063e262b1d57d7e78b4
+公式：https://ja.reactjs.org/docs/hooks-reference.html
 
 # レンダリング方法
 
 Next.js ではページ毎にレンダリング方法を変えることができ、以下の 3 つの方法がある
+※`getInitialProps`は昔の記法のため、下記推奨
 
 ## CSR
 
@@ -124,7 +130,9 @@ Next.js ではページ毎にレンダリング方法を変えることができ
 以下のように`getServerSideProps`メソッドの記述を tsx ファイル内にすることで、そのメソッド内の処理は SSR される。
 
 ```
-export async function getServerSideProps(context) {
+import { GetServerSideProps } from 'next'
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       // コンポーネントに渡すための props
@@ -139,7 +147,9 @@ export async function getServerSideProps(context) {
 以下のように`getStaticProps`メソッドの記述を tsx ファイル内にすることで、そのメソッド内の処理は SSG される。
 
 ```
-export async function getStaticProps() {
+import { GetStaticProps } from 'next'
+
+export const getStaticProps: GetStaticProps = async (context) => {
   const allPostsData = getSortedPostsData()
   return {
     props: {
@@ -148,3 +158,5 @@ export async function getStaticProps() {
   }
 }
 ```
+
+公式：https://nextjs.org/docs/basic-features/typescript#static-generation-and-server-side-rendering
