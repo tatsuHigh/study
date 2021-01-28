@@ -116,18 +116,20 @@ useEffect
 
 # レンダリング方法
 
-Next.js ではページ毎にレンダリング方法を変えることができ、以下の 3 つの方法がある
+Next.js ではページ毎にレンダリング方法を変えることができ、以下の 3 つの方法がある  
+レンダリングはページの生成方法であり、API の呼び出し方法とは別。  
+React コンポーネントから直接 API を呼ぶ方法はクライアントフェッチと呼ぶ。  
 ※`getInitialProps`は昔の記法のため、下記推奨
 
-## CSR
+## CSR（Client Side Rendering）
 
-クライアントサイドレンダリング。  
+静的なファイルを返す。  
 特に何もしなければこの形式になる。
 
-## SSR
+## SSR（Server Side Rendering）
 
-サーバーサイドレンダリング。  
-以下のように`getServerSideProps`メソッドの記述を tsx ファイル内にすることで、そのメソッド内の処理は SSR される。
+リクエスト時にサーバーサイドでページをレンダリングして返す。  
+以下のように`getServerSideProps`メソッドの記述を tsx ファイル内にすることで、そのメソッド内の処理は SSR 時に実行される。
 
 ```
 import { GetServerSideProps } from 'next'
@@ -141,10 +143,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 ```
 
-## SSG
+## SSG（Static Site Generation）
 
-静的生成。  
-以下のように`getStaticProps`メソッドの記述を tsx ファイル内にすることで、そのメソッド内の処理は SSG される。
+ビルド時にサーバーサイドでページをレンダリングし、静的ファイルとしてウェブサーバーに持っておく。  
+リクエスト時には静的なファイルを返す。  
+以下のように`getStaticProps`メソッドの記述を tsx ファイル内にすることで、そのメソッド内の処理は SSG 時に実行される。
 
 ```
 import { GetStaticProps } from 'next'
