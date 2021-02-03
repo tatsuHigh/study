@@ -170,9 +170,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 ### getStaticPaths
 
-動的なルートで SSG する際に使用する。(静的なルートの場合は getStaticProps のみで OK)
-
-例えば以下のように動的なパスがある場合、とりうる値をリストアップするのが getStaticPaths の仕事。
+動的なルートで SSG する際に使用する。(静的なルートの場合は getStaticProps のみで OK)  
+例えば以下のように動的なパスがある場合、とりうる値をリストアップするのが getStaticPaths の仕事。  
 `article/[articleId]`
 
 ただ、SSG 後にデータが増えた場合はオプション fallback によって挙動を選ぶことができる。
