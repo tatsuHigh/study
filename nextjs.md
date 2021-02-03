@@ -104,15 +104,20 @@ React hooks は簡単に言うと、
 って感じ。  
 なので関数コンポーネントのためにあるもの。
 
-```
-useState
-useEffect
-```
+とりあえず以下の 3 つを覚えておきたい。
 
-などがある。
+- useState
+- useEffect
+- useCotext
 
 参考：https://qiita.com/seira/items/f063e262b1d57d7e78b4
 公式：https://ja.reactjs.org/docs/hooks-reference.html
+
+## useState
+
+## useEffect
+
+## useCotext
 
 # レンダリング方法
 
@@ -146,7 +151,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 ## SSG（Static Site Generation）
 
 ビルド時にサーバーサイドでページをレンダリングし、静的ファイルとしてウェブサーバーに持っておく。  
-リクエスト時には静的なファイルを返す。  
+リクエスト時には静的なファイルを返す。
+
 以下のように`getStaticProps`メソッドの記述を tsx ファイル内にすることで、そのメソッド内の処理は SSG 時に実行される。
 
 ```
@@ -161,5 +167,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 ```
+
+### getStaticPaths
+
+動的なルートで SSG する際に使用する。(静的なルートの場合は getStaticProps のみで OK)
+
+例えば以下のように動的なパスがある場合、とりうる値をリストアップするのが getStaticPaths の仕事。
+`article/[articleId]`
+
+ただ、SSG 後にデータが増えた場合はオプション fallback によって挙動を選ぶことができる。
+
+- fallback:false
+  指定外のルートは 404 を返す。データ追加が無い場合に選択するとよい。
+- fallback:true
+  最初のリクエストにはフォールバックページを出し、その間に追加データを SSG する。  
+  データ追加がある場合に選択する。
+- fallback:"blocking"
+  最初のリクエストは SSR。SSG ができたら以降はそれを返す。  
+  データ追加がある場合に選択する。
 
 公式：https://nextjs.org/docs/basic-features/typescript#static-generation-and-server-side-rendering
