@@ -110,14 +110,62 @@ React hooks は簡単に言うと、
 - useEffect
 - useCotext
 
-参考：https://qiita.com/seira/items/f063e262b1d57d7e78b4  
-公式：https://ja.reactjs.org/docs/hooks-reference.html
-
 ## useState
+
+関数コンポーネントで state を持つための hook。
+
+```
+const testFunc = () => {
+  // count という名前の state 変数を宣言、初期値 0をセット
+  // setCountはcountを更新するための関数
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      ・・・
+    </>
+  )
+}
+```
 
 ## useEffect
 
+関数の実行タイミングを React のレンダリング後まで遅らせるための hook。
+
+```
+const testFunc = () => {
+  useEffect(() => {
+    // この部分の処理がDOMレンダリング後に実行される
+  })
+
+  return (
+    <>
+      ・・・
+    </>
+  )
+}
+```
+
 ## useCotext
+
+関数コンポーネントで Context を扱うための hook。  
+Redux を使わなくても簡単なグローバル変数っぽいものが使える。  
+大規模なアプリケーションではない限り Redux ではなくコチラでいい感じ。
+
+```
+const testFunc = () => {
+  const user = useContext(userInfo)
+
+  return (
+    <>
+      <p>Hello! {user.name}</p>
+    </>
+  )
+}
+```
+
+参考：https://qiita.com/seira/items/f063e262b1d57d7e78b4  
+公式：https://ja.reactjs.org/docs/hooks-reference.html
 
 # レンダリング方法
 
