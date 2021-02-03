@@ -110,7 +110,7 @@ React hooks は簡単に言うと、
 - useEffect
 - useCotext
 
-参考：https://qiita.com/seira/items/f063e262b1d57d7e78b4
+参考：https://qiita.com/seira/items/f063e262b1d57d7e78b4  
 公式：https://ja.reactjs.org/docs/hooks-reference.html
 
 ## useState
@@ -176,12 +176,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 ただ、SSG 後にデータが増えた場合はオプション fallback によって挙動を選ぶことができる。
 
-- fallback:false
+- fallback:false  
   指定外のルートは 404 を返す。データ追加が無い場合に選択するとよい。
-- fallback:true
+- fallback:true  
   最初のリクエストにはフォールバックページを出し、その間に追加データを SSG する。  
   データ追加がある場合に選択する。
-- fallback:"blocking"
+- fallback:"blocking"  
   最初のリクエストは SSR。SSG ができたら以降はそれを返す。  
   データ追加がある場合に選択する。
 
