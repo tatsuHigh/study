@@ -233,4 +233,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
   最初のリクエストは SSR。SSG ができたら以降はそれを返す。  
   データ追加がある場合に選択する。
 
+### ISR（Incremental Static Regeneration）
+
+SSG のページを更新する際に使用する。
+
+以下のように`getStaticProps`メソッドに revalidate オプションを指定することによって、更新の間隔を調整することができる。  
+更新するのは新しいリクエスト時のみなので余分なリクエストが発生しない。
+
+```
+import { GetStaticProps } from 'next'
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    },
+    // 5秒ごとに1回更新するという設定
+    revalidate: 5
+  }
+}
+```
+
 公式：https://nextjs.org/docs/basic-features/typescript#static-generation-and-server-side-rendering
